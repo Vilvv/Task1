@@ -1,0 +1,14 @@
+.vs/
+
+Base01.cs
+
+*.nuget.props
+*.nuget.targets
+packages/
+
+*.sln.docstates
+
+[Bb]in/
+[Oo]bj/
+
+*.user
