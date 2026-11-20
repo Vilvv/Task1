@@ -8,6 +8,8 @@ internal class Program
     private static void Main(string[] args)
     {
         const int MAXTRIES = 5;
+        const int MIN_LEN = 8;
+        const int MAX_LEN = 30;
         int ms;
 
         //locale
@@ -60,14 +62,21 @@ internal class Program
         string initialWord = Console.ReadLine()?.ToLower() ?? "";
 
         int i = 0;
-        while ((initialWord.Length < 8 || initialWord.Length > 30) && i < MAXTRIES)
+        while ((initialWord.Length < MIN_LEN || initialWord.Length > MAX_LEN) && i < MAXTRIES)
         {
             Console.WriteLine(locale[lang][1]);
             initialWord = Console.ReadLine()?.ToLower() ?? "";
             i++;
         }
 
-        if (initialWord.Length < 8 || initialWord.Length > 30)
+        if (!initialWord.All(char.IsLetter))
+        {
+            Console.WriteLine("Word must contain only letters!");
+            Console.ReadKey();
+            return;
+        }
+
+        if (initialWord.Length < MIN_LEN || initialWord.Length > MAX_LEN)
         {
             Console.WriteLine(locale[lang][8]);
             Console.ReadKey();
